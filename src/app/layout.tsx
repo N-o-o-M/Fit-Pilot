@@ -1,7 +1,11 @@
-import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+
+import ConvexClerkProvider from "@/providers/ConvexClerkProvider";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +33,8 @@ export default function RootLayout({
         <body
           className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
+          <Navbar />
+
           {/* GRID BACKGROUND */}
           <div className="fixed inset-0 -z-1">
             <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background"></div>
@@ -36,8 +42,10 @@ export default function RootLayout({
           </div>
 
           <main className="pt-24 flex-grow">{children}</main>
+          <Footer />
         </body>
       </html>
+      <Toaster />
     </ConvexClerkProvider>
   );
 }
